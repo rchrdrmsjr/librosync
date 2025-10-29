@@ -4,14 +4,14 @@ import { useBook } from "@/hooks/useBook";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { books } from "@/lib/sample";
+// import { books } from "@/lib/sample";
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 
 const BookSection = () => {
-  const { error, loading } = useBook();
+  const { books, error, loading } = useBook();
   const navigate = useNavigate();
 
   const displayedBooks = books.slice(0, 6);

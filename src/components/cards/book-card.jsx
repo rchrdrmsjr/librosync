@@ -1,7 +1,8 @@
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const BookCard = ({ book }) => {
+  const isAvailable = book.availableCount > 0;
+
   return (
     <div
       key={book._id}
@@ -19,19 +20,13 @@ const BookCard = ({ book }) => {
         <div className="absolute top-2 right-2 flex flex-wrap gap-2 justify-end">
           <Badge
             className={`text-xs px-2 py-1 ${
-              book.available > 0
+              isAvailable
                 ? "bg-green-600 hover:bg-green-700"
                 : "bg-red-600 hover:bg-red-700"
             }`}
           >
-            {book.available > 0 ? `${book.available} available` : "Unavailable"}
+            {isAvailable ? `${book.availableCount} available` : "Unavailable"}
           </Badge>
-
-          {/* {book.category && (
-            <Badge className="text-xs px-2 py-1 bg-blue-600 hover:bg-blue-700">
-              {book.category}
-            </Badge>
-          )} */}
         </div>
       </div>
 
@@ -43,12 +38,12 @@ const BookCard = ({ book }) => {
         <p className="text-sm text-gray-600 -mt-1">by {book.author}</p>
 
         <div className="text-sm text-gray-700 space-y-1 pt-1">
-          <p>
-            <span className="font-semibold">Genre:</span> {book.genre}
-          </p>
-          {/* <p>
-            <span className="font-semibold">Total Copies:</span> {book.quantity}
-          </p> */}
+          {book.genre?.length > 0 && (
+            <p>
+              <span className="font-semibold">Genre:</span>{" "}
+              {book.genre.join(", ")}
+            </p>
+          )}
         </div>
       </div>
     </div>

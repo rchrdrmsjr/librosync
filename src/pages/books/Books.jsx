@@ -10,22 +10,30 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { books } from "@/lib/sample"; // mockBooks
-// import { useBook } from "@/hooks/useBook";
+import { useBook } from "@/hooks/useBook";
 
 const BooksPage = () => {
-  // const { books, error, loading } = useBook();
+  const { books = [], error, loading } = useBook();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [availability, setAvailability] = useState("all");
   const [genre, setGenre] = useState("all");
 
-  // Unique categories
+  // Extract unique categories
   const categories = [
     ...new Set(
       books
-        .map((b) => b.category)
+        .flatMap((b) => b.category || [])
         .filter((c) => typeof c === "string" && c.trim() !== "")
+    ),
+  ];
+
+  // Extract unique genres
+  const genres = [
+    ...new Set(
+      books
+        .flatMap((b) => b.genre || [])
+        .filter((g) => typeof g === "string" && g.trim() !== "")
     ),
   ];
 
@@ -34,13 +42,16 @@ const BooksPage = () => {
     const matchesSearch =
       book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       book.author.toLowerCase().includes(searchQuery.toLowerCase());
+
     const matchesAvailability =
       availability === "all"
         ? true
         : availability === "available"
-        ? book.available > 0
-        : book.available === 0;
-    const matchesGenre = genre === "all" ? true : book.genre === genre;
+        ? book.availableCount > 0
+        : book.availableCount === 0;
+
+    const matchesGenre =
+      genre === "all" ? true : (book.genre || []).includes(genre);
 
     return matchesSearch && matchesAvailability && matchesGenre;
   });
@@ -82,13 +93,7 @@ const BooksPage = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Genres</SelectItem>
-                {[
-                  ...new Set(
-                    books
-                      .map((b) => b.genre)
-                      .filter((g) => typeof g === "string" && g.trim() !== "")
-                  ),
-                ].map((g) => (
+                {genres.map((g) => (
                   <SelectItem key={g} value={g}>
                     {g.charAt(0).toUpperCase() + g.slice(1)}
                   </SelectItem>
@@ -98,11 +103,11 @@ const BooksPage = () => {
           </div>
         </div>
 
-        {/* Carousel per category */}
+        {/* Category carousels */}
         {categories.length > 0 ? (
           categories.map((cat) => {
-            const booksInCategory = filteredBooks.filter(
-              (b) => b.category === cat
+            const booksInCategory = filteredBooks.filter((b) =>
+              (b.category || []).includes(cat)
             );
             if (booksInCategory.length === 0) return null;
 
@@ -114,7 +119,7 @@ const BooksPage = () => {
                   </h3>
                 </div>
 
-                <ScrollArea className="w-full whitespace-nowrap ">
+                <ScrollArea className="w-full whitespace-nowrap">
                   <div className="flex gap-4 p-2">
                     {booksInCategory.map((book) => (
                       <div key={book._id} className="flex-none w-64">
