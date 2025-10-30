@@ -35,8 +35,7 @@ const BookCard = ({ book }) => {
         <h3 className="text-base font-semibold text-primary line-clamp-2">
           {book.title}
         </h3>
-        <p className="text-sm text-gray-600 -mt-1">by {book.author}</p>
-
+        <p className="text-sm text-gray-600 -mt-1">by {book.author}</p>k
         <div className="text-sm text-gray-700 space-y-1 pt-1">
           {book.genre?.length > 0 && (
             <p>

@@ -1,4 +1,3 @@
-import { Badge } from "../ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 const AnnoncementCard = ({ announcement }) => {
@@ -9,18 +8,17 @@ const AnnoncementCard = ({ announcement }) => {
     >
       <CardHeader>
         <div className="flex justify-between items-center mb-2">
-          <Badge variant="secondary">{announcement.type}</Badge>
           <span className="text-xs text-muted-foreground">
-            📅 {announcement.date}
+            📅 {new Date(announcement.createdAt).toLocaleString()}
           </span>
         </div>
         <CardTitle className="text-lg font-semibold text-primary">
-          {announcement.subject}
+          {announcement.title}
         </CardTitle>
       </CardHeader>
       <CardContent>
         <p className="text-sm text-gray-600 leading-relaxed">
-          {announcement.message}
+          {announcement.content}
         </p>
       </CardContent>
     </Card>

@@ -158,25 +158,25 @@ export const books = [
 export const announcements = [
   {
     id: 1,
-    subject: "New Digital Collection Available",
+    title: "New Digital Collection Available",
     date: "June 15, 2023",
-    message:
+    content:
       "We've just added over 5,000 new e-books to our digital collection, including bestsellers and academic titles. Access them anytime, anywhere with your LIBROSYNC account.",
     type: "Collection Update",
   },
   {
     id: 2,
-    subject: "Summer Reading Challenge",
+    title: "Summer Reading Challenge",
     date: "June 1, 2023",
-    message:
+    content:
       "Join our annual summer reading challenge! Read 5 books before August 31st and earn rewards. Perfect for all age groups with special categories for children, teens, and adults.",
     type: "Event",
   },
   {
     id: 3,
-    subject: "Library Closure Notice",
+    title: "Library Closure Notice",
     date: "May 28, 2023",
-    message:
+    content:
       "The main branch will be closed on June 20th for annual maintenance. Our digital services will remain available 24/7. Plan your visits accordingly.",
     type: "Alert",
   },
