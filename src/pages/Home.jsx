@@ -1,3 +1,4 @@
+import AboutSection from "@/components/about-section";
 import AnnouncementsSection from "@/components/announcements-section";
 import BookSection from "@/components/book-section";
 import HeroSection from "@/components/hero-section";
@@ -11,6 +12,7 @@ const Home = () => {
       <BookSection />
       <AnnouncementsSection />
       <ServicesSection />
+      <AboutSection />
     </>
   );
 };

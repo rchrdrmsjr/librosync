@@ -26,7 +26,7 @@ const footerSections = [
     links: [
       {
         label: "Visit Us",
-        path: "https://www.google.com/maps/search/Southville+8B+Phase+5,+Barangay+San+Isidro,+Montalban,+Rizal/@14.606816,121.0131297,11z/data=!3m1!4b1?hl=en&entry=ttu&g_ep=EgoyMDI1MTAwOC4wIKXMDSoASAFQAw%3D%3D",
+        path: "https://www.google.com/maps/search/Southville+8B+Phase+5,+Barangay+San+Isidro,+Montalban,+Rizal/@14.606816,121.0131297,11z",
         icon: "fas fa-map-marker-alt",
       },
       { label: "Email Us", path: "/#contact/email", icon: "fas fa-envelope" },
@@ -55,31 +55,59 @@ const footerSections = [
         path: "/#resources/catalog",
         icon: "fas fa-book",
       },
+      {
+        label: "Get the mobile app (APK)",
+        path: "/apk/librosync-app.apk",
+        icon: "fas fa-download",
+        isButton: true,
+      },
     ],
   },
 ];
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-black text-white shadow-lg">
+    <footer
+      className="text-white shadow-lg"
+      style={{
+        background: "linear-gradient(to right, #2C2C3E, #43435E)", // custom palette
+      }}
+    >
       <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {footerSections.map((section, index) => (
-            <div key={index} className="">
-              <h3 className="text-xl font-bold mb-6 text-secondary border-b-2 border-secondary pb-2 inline-block">
+            <div key={index}>
+              <h3
+                className="text-xl font-bold mb-6 pb-2 inline-block"
+                style={{
+                  color: "#E0A526",
+                  borderBottom: "2px solid #E0A526",
+                }}
+              >
                 {section.title}
               </h3>
+
               <ul className="space-y-4">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <Link
                       to={link.path}
-                      className="flex items-center text-white/80 hover:text-secondary hover:scale-105 transition-all duration-300 group"
+                      className="flex items-center transition-all duration-300 group"
                       aria-label={link.label}
+                      style={{ color: "rgba(255,255,255,0.8)" }}
+                      onMouseEnter={(e) => (e.target.style.color = "#E0A526")}
+                      onMouseLeave={(e) =>
+                        (e.target.style.color = "rgba(255,255,255,0.8)")
+                      }
                     >
                       <i
-                        className={`${link.icon} mr-3 text-secondary group-hover:text-white`}
+                        className={`${link.icon} mr-3`}
+                        style={{
+                          color: "#E0A526",
+                          transition: "color .2s ease",
+                        }}
                       ></i>
+
                       {link.label}
                     </Link>
                   </li>
@@ -89,13 +117,21 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Bottom section */}
-        <div className="border-t border-white/20 pt-8">
+        {/* Bottom */}
+        <div
+          className="pt-8"
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.2)",
+          }}
+        >
           <div className="text-center">
-            <p className="text-white/70 text-sm mb-4">
+            <p
+              className="text-sm mb-4"
+              style={{ color: "rgba(255,255,255,0.7)" }}
+            >
               © 2025 LIBROSYNC. All rights reserved. | Southville 8B E-Library
             </p>
-            <p className="text-white/50 text-xs">
+            <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
               Empowering knowledge through accessible digital resources.
             </p>
           </div>

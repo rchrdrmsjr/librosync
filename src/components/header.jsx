@@ -14,6 +14,7 @@ const navs = [
   { label: "Books", path: "#books" },
   { label: "Announcement", path: "#announcement" },
   { label: "Services", path: "#services" },
+  { label: "About", path: "#about" },
 ];
 
 const Header = () => {
@@ -37,7 +38,12 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-gradient-to-r from-gray-900 to-black z-50 shadow-lg">
+    <header
+      className="fixed top-0 left-0 right-0 z-50 shadow-lg"
+      style={{
+        background: "linear-gradient(to right, #2C2C3E, #43435E)", // your palette
+      }}
+    >
       <div className="screen py-4 flex items-center justify-between gap-6">
         {/* Logo */}
         <div className="flex items-center gap-2 text-white">
@@ -56,7 +62,12 @@ const Header = () => {
               key={index}
               to={nav.path}
               onClick={(e) => handleNavClick(e, nav.path)}
-              className="text-white font-medium hover:text-secondary hover:underline underline-offset-4 decoration-2"
+              className="text-white font-medium underline-offset-4 decoration-2"
+              style={{
+                transition: "color .2s ease",
+              }}
+              onMouseEnter={(e) => (e.target.style.color = "#E0A526")}
+              onMouseLeave={(e) => (e.target.style.color = "white")}
             >
               {nav.label}
             </NavLink>
@@ -70,9 +81,13 @@ const Header = () => {
               <Menu className="w-6 h-6" />
             </button>
           </SheetTrigger>
+
           <SheetContent
             side="left"
-            className="bg-gradient-to-r from-gray-900 to-black p-4"
+            className="p-4"
+            style={{
+              background: "linear-gradient(to right, #2C2C3E, #43435E)",
+            }}
           >
             <SheetHeader>
               <SheetTitle className="flex items-center gap-2 text-white">
@@ -87,7 +102,12 @@ const Header = () => {
                   key={index}
                   to={nav.path}
                   onClick={(e) => handleNavClick(e, nav.path)}
-                  className="block text-white font-medium hover:text-secondary"
+                  className="block text-white font-medium"
+                  style={{
+                    transition: "color .2s ease",
+                  }}
+                  onMouseEnter={(e) => (e.target.style.color = "#E0A526")}
+                  onMouseLeave={(e) => (e.target.style.color = "white")}
                 >
                   {nav.label}
                 </NavLink>

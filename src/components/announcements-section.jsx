@@ -23,13 +23,13 @@ const AnnouncementsSection = () => {
   const totalPages = Math.ceil(announcements.length / announcementsPerPage);
 
   return (
-    <section id="announcement">
+    <section id="announcement" className="bg-[#43435E]">
       <div className="screen py-32">
         <div className="text-center space-y-1 md:space-y-2 mb-10">
-          <h2 className="text-dark text-2xl md:text-3xl font-bold">
+          <h2 className="text-white text-2xl md:text-3xl font-bold">
             Library Updates & Events
           </h2>
-          <p className="text-gray-600">
+          <p className="text-gray-400">
             Stay informed about the latest news, events, and updates from our
             library
           </p>
