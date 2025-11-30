@@ -1,0 +1,108 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "tryAgain": "Try Again",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "all": "All",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "next": "Next",
+    "previous": "Previous"
+  },
+  "header": {
+    "home": "Home",
+    "books": "Books",
+    "announcement": "Announcement",
+    "services": "Services",
+    "about": "About",
+    "favorites": "Favorites"
+  },
+  "hero": {
+    "title": "Welcome to",
+    "subtitle": "Your Gateway to Learning!",
+    "description": "Southville 8B E-Library, built through the initiative of Congressman Tom Hernandez, is a public library made especially for students. With LIBROSYNC, you can browse available books, read announcements, and search easily using smart filters. Plus, enjoy free computer use and free printing inside the library — all to support your learning.",
+    "exploreButton": "Explore Now"
+  },
+  "books": {
+    "title": "Featured Books",
+    "description": "Discover our carefully curated collection of popular and recommended titles",
+    "byCategory": "Books by Category",
+    "browseDescription": "Browse our library by categories and discover new favorites",
+    "searchPlaceholder": "Search by title, author...",
+    "noBooks": "No Books Available",
+    "noBooksDescription": "We're currently updating our featured books collection. Please check back soon!",
+    "noResults": "No Books Found",
+    "noResultsDescription": "Try adjusting your search or filters to find more books.",
+    "errorLoading": "Error Loading Books",
+    "loadingBooks": "Loading books...",
+    "showing": "Showing",
+    "of": "of",
+    "books": "books"
+  },
+  "announcements": {
+    "title": "Library Updates & Events",
+    "description": "Stay informed about the latest news, events, and updates from our library",
+    "loading": "Loading announcements...",
+    "error": "Error Loading Announcements",
+    "noAnnouncements": "No Announcements Available",
+    "noAnnouncementsDescription": "Check back later for updates and events."
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Discover the wide range of services we offer to support your learning journey",
+    "service1": {
+      "title": "Offer a Collection of Books",
+      "description": "Explore a diverse range of books across different genres and subjects, curated to support your growth."
+    },
+    "service2": {
+      "title": "Borrow Books",
+      "description": "Easily borrow books to take home and enjoy at your own pace, supporting your love for reading."
+    },
+    "service3": {
+      "title": "Free Use of PC",
+      "description": "Access our computers for free to study, research, or complete school and work projects efficiently."
+    },
+    "service4": {
+      "title": "Open Hours",
+      "description": "Monday to Friday, 8:00 AM to 5:00 PM. Visit us anytime within our service hours."
+    },
+    "service5": {
+      "title": "Free Document Printing",
+      "description": "Cut-off for printing is from 3:30 PM to 4:00 PM. Print your documents at no cost during this time."
+    }
+  },
+  "about": {
+    "title": "About",
+    "description": "We are pleased to share our mission and vision for a brighter future for the youth and our community.",
+    "mission": {
+      "title": "MISSION",
+      "text": "Pangunahin sa aming adhikain ay ang mapaigting pa ang interes ng mga bata sa pagbabasa dahil iba pa rin ang naibibigay na kasiyahan ng pagbabasa. Nais din naming makatulong na mapalawak ang kaalaman at karunungan ng mga bata."
+    },
+    "vision": {
+      "title": "VISION",
+      "text": "Ang magkaroon ng mga mamamayan na sagana sa karunungan upang makapaghahatid ng masaganang pamumuhay sa bawat pamilya at makadaragdag sa kaunlaran ng ating bayan."
+    }
+  },
+  "favorites": {
+    "title": "My Favorites",
+    "description": "Books you've marked as favorites",
+    "noFavorites": "No Favorites Yet",
+    "noFavoritesDescription": "Start adding books to your favorites by clicking the heart icon on any book card.",
+    "clearAll": "Clear All",
+    "inFavorites": "in favorites"
+  },
+  "bookDetail": {
+    "by": "by",
+    "description": "Description",
+    "genres": "Genres",
+    "category": "Category",
+    "isbn": "ISBN",
+    "publisher": "Publisher",
+    "published": "Published"
+  }
+}
+

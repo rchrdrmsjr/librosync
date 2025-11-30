@@ -1,0 +1,11 @@
+# robots.txt for LibroSync
+User-agent: *
+Allow: /
+
+# Disallow admin or private routes if any
+# Disallow: /admin
+# Disallow: /private
+
+# Sitemap location
+Sitemap: https://librosync.vercel.app/sitemap.xml
+

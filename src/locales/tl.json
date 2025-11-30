@@ -1,0 +1,107 @@
+{
+  "common": {
+    "loading": "Naglo-load...",
+    "error": "Error",
+    "tryAgain": "Subukan Muli",
+    "close": "Isara",
+    "search": "Maghanap",
+    "filter": "Filter",
+    "sort": "Ayusin",
+    "all": "Lahat",
+    "available": "Available",
+    "unavailable": "Hindi Available",
+    "next": "Susunod",
+    "previous": "Nakaraan"
+  },
+  "header": {
+    "home": "Home",
+    "books": "Mga Aklat",
+    "announcement": "Anunsyo",
+    "services": "Serbisyo",
+    "about": "Tungkol sa Amin"
+  },
+  "hero": {
+    "title": "Maligayang Pagdating sa",
+    "subtitle": "Ang Iyong Gateway sa Pag-aaral!",
+    "description": "Ang Southville 8B E-Library, na itinayo sa pamamagitan ng inisyatiba ni Congressman Tom Hernandez, ay isang pampublikong aklatan na ginawa lalo na para sa mga mag-aaral. Sa LIBROSYNC, maaari mong mag-browse ng available na mga libro, magbasa ng mga anunsyo, at maghanap nang madali gamit ang matalinong mga filter. Dagdag pa, tamasahin ang libreng paggamit ng computer at libreng pag-print sa loob ng aklatan — lahat upang suportahan ang iyong pag-aaral.",
+    "exploreButton": "Tuklasin Ngayon"
+  },
+  "books": {
+    "title": "Mga Featured na Aklat",
+    "description": "Tuklasin ang aming maingat na na-curate na koleksyon ng mga sikat at inirerekomendang mga titulo",
+    "byCategory": "Mga Aklat ayon sa Kategorya",
+    "browseDescription": "Mag-browse sa aming aklatan ayon sa mga kategorya at tuklasin ang mga bagong paborito",
+    "searchPlaceholder": "Maghanap ayon sa pamagat, may-akda...",
+    "noBooks": "Walang Available na Aklat",
+    "noBooksDescription": "Kami ay kasalukuyang nag-a-update ng aming koleksyon ng featured na aklat. Pakibalikan kami sa lalong madaling panahon!",
+    "noResults": "Walang Nahanap na Aklat",
+    "noResultsDescription": "Subukan na ayusin ang iyong paghahanap o mga filter upang makahanap ng mas maraming aklat.",
+    "errorLoading": "Error sa Pag-load ng Aklat",
+    "loadingBooks": "Naglo-load ng mga aklat...",
+    "showing": "Ipinapakita",
+    "of": "ng",
+    "books": "mga aklat"
+  },
+  "announcements": {
+    "title": "Mga Update at Event ng Aklatan",
+    "description": "Manatiling nakaalam tungkol sa pinakabagong balita, mga event, at update mula sa aming aklatan",
+    "loading": "Naglo-load ng mga anunsyo...",
+    "error": "Error sa Pag-load ng Anunsyo",
+    "noAnnouncements": "Walang Available na Anunsyo",
+    "noAnnouncementsDescription": "Bumalik mamaya para sa mga update at event."
+  },
+  "services": {
+    "title": "Aming Mga Serbisyo",
+    "description": "Tuklasin ang malawak na hanay ng mga serbisyo na aming inaalok upang suportahan ang iyong pag-aaral",
+    "service1": {
+      "title": "Nag-aalok ng Koleksyon ng Aklat",
+      "description": "Tuklasin ang iba't ibang hanay ng mga aklat sa iba't ibang genre at paksa, na na-curate upang suportahan ang iyong paglago."
+    },
+    "service2": {
+      "title": "Manghiram ng Aklat",
+      "description": "Madaling manghiram ng mga aklat upang dalhin sa bahay at tamasahin sa iyong sariling bilis, na sumusuporta sa iyong pagmamahal sa pagbabasa."
+    },
+    "service3": {
+      "title": "Libreng Paggamit ng PC",
+      "description": "I-access ang aming mga computer nang libre upang mag-aral, mag-research, o kumpletuhin ang mga proyekto sa paaralan at trabaho nang mahusay."
+    },
+    "service4": {
+      "title": "Oras ng Pagbubukas",
+      "description": "Lunes hanggang Biyernes, 8:00 AM hanggang 5:00 PM. Bisitahin kami anumang oras sa loob ng aming oras ng serbisyo."
+    },
+    "service5": {
+      "title": "Libreng Pag-print ng Dokumento",
+      "description": "Ang cut-off para sa pag-print ay mula 3:30 PM hanggang 4:00 PM. I-print ang iyong mga dokumento nang walang bayad sa panahong ito."
+    }
+  },
+  "about": {
+    "title": "Tungkol",
+    "description": "Ikinagagalak naming ibahagi ang aming misyon at pananaw para sa isang mas maliwanag na hinaharap para sa kabataan at aming komunidad.",
+    "mission": {
+      "title": "MISYON",
+      "text": "Pangunahin sa aming adhikain ay ang mapaigting pa ang interes ng mga bata sa pagbabasa dahil iba pa rin ang naibibigay na kasiyahan ng pagbabasa. Nais din naming makatulong na mapalawak ang kaalaman at karunungan ng mga bata."
+    },
+    "vision": {
+      "title": "PANANAW",
+      "text": "Ang magkaroon ng mga mamamayan na sagana sa karunungan upang makapaghahatid ng masaganang pamumuhay sa bawat pamilya at makadaragdag sa kaunlaran ng ating bayan."
+    }
+  },
+  "favorites": {
+    "title": "Aking Mga Paborito",
+    "description": "Mga aklat na minarkahan mo bilang paborito",
+    "noFavorites": "Walang Paborito Pa",
+    "noFavoritesDescription": "Simulan ang pagdaragdag ng mga aklat sa iyong mga paborito sa pamamagitan ng pag-click sa heart icon sa anumang book card.",
+    "clearAll": "Linisin Lahat",
+    "inFavorites": "sa mga paborito"
+  },
+  "bookDetail": {
+    "by": "ni",
+    "description": "Paglalarawan",
+    "genres": "Mga Genre",
+    "category": "Kategorya",
+    "isbn": "ISBN",
+    "publisher": "Publisher",
+    "published": "Nai-publish"
+  }
+}
+
