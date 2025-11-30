@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const footerSections = [
   {
@@ -56,76 +57,144 @@ const footerSections = [
 ];
 
 const Footer = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  };
+
   return (
     <footer
-      className="text-white shadow-lg"
+      className="text-white shadow-lg relative overflow-hidden"
       style={{
         background: "linear-gradient(to right, #2C2C3E, #43435E)",
       }}
     >
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      {/* Decorative background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: "radial-gradient(circle at 2px 2px, rgba(224, 165, 38, 0.3) 1px, transparent 0)",
+          backgroundSize: "40px 40px",
+        }} />
+      </div>
+
+      <div className="container mx-auto px-6 py-16 relative z-10">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {footerSections.map((section, index) => (
-            <div key={index}>
-              <h3
-                className="text-xl font-bold mb-6 pb-2 inline-block"
+            <motion.div key={index} variants={itemVariants}>
+              <motion.h3
+                className="text-xl font-bold mb-6 pb-2 inline-block relative"
                 style={{
                   color: "#E0A526",
-                  borderBottom: "2px solid #E0A526",
                 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
                 {section.title}
-              </h3>
+                <motion.span
+                  className="absolute bottom-0 left-0 h-0.5 bg-[#E0A526]"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 + 0.2, duration: 0.5 }}
+                />
+              </motion.h3>
 
               <ul className="space-y-4">
                 {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <Link
-                      to={link.path}
-                      className="flex items-center transition-all duration-300 group"
-                      aria-label={link.label}
-                      style={{ color: "rgba(255,255,255,0.8)" }}
-                      onMouseEnter={(e) => (e.target.style.color = "#E0A526")}
-                      onMouseLeave={(e) =>
-                        (e.target.style.color = "rgba(255,255,255,0.8)")
-                      }
-                    >
-                      <i
-                        className={`${link.icon} mr-3`}
-                        style={{
-                          color: "#E0A526",
-                          transition: "color .2s ease",
-                        }}
-                      ></i>
-
-                      {link.label}
-                    </Link>
-                  </li>
+                  <motion.li
+                    key={linkIndex}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 + linkIndex * 0.1 + 0.3 }}
+                  >
+                    <motion.div whileHover={{ x: 5 }}>
+                      <Link
+                        to={link.path}
+                        className="flex items-center transition-all duration-300 group"
+                        aria-label={link.label}
+                        style={{ color: "rgba(255,255,255,0.8)" }}
+                      >
+                        <motion.i
+                          className={`${link.icon} mr-3`}
+                          style={{
+                            color: "#E0A526",
+                          }}
+                          whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+                          transition={{ duration: 0.3 }}
+                        />
+                        <motion.span
+                          whileHover={{ color: "#E0A526" }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {link.label}
+                        </motion.span>
+                      </Link>
+                    </motion.div>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom */}
-        <div
+        <motion.div
           className="pt-8"
           style={{
             borderTop: "1px solid rgba(255,255,255,0.2)",
           }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
           <div className="text-center">
-            <p
+            <motion.p
               className="text-sm mb-4"
               style={{ color: "rgba(255,255,255,0.7)" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
             >
               © 2025 LIBROSYNC. All rights reserved. | Southville 8B E-Library
-            </p>
-            <p className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>
+            </motion.p>
+            <motion.p
+              className="text-xs"
+              style={{ color: "rgba(255,255,255,0.5)" }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6 }}
+            >
               Empowering knowledge through accessible digital resources.
-            </p>
+            </motion.p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

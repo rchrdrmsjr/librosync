@@ -1,46 +1,90 @@
 import BookCard from "./cards/book-card";
 import { BookOpen } from "lucide-react";
-import { useBook } from "@/hooks/useBook";
+import { useBooksQuery } from "@/hooks/useBooksQuery";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 // import { books } from "@/lib/sample";
 
 // Swiper imports
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const BookSection = () => {
-  const { books, error, loading } = useBook();
+  const { books, error, loading } = useBooksQuery();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
-  const displayedBooks = books.slice(0, 6);
+  // Display books for carousel - duplicate for smooth infinite loop
+  const displayedBooks = books.length > 0 
+    ? [...books.slice(0, 10), ...books.slice(0, 10)] // Duplicate for seamless loop
+    : [];
 
   const handleShowMore = () => navigate("/books");
 
   const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 },
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
   };
 
   return (
     <section id="books">
       <div className="screen py-32">
         {/* Header */}
-        <div className="text-center space-y-1 md:space-y-2 mb-10">
-          <h2 className="text-dark text-2xl md:text-3xl font-bold">
-            Featured Books
-          </h2>
-          <p className="text-gray-600">
-            Discover our carefully curated collection of popular and recommended
-            titles
-          </p>
-        </div>
+        <motion.div
+          className="text-center space-y-1 md:space-y-2 mb-10"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.h2
+            className="text-dark text-2xl md:text-3xl font-bold"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            {t("books.title")}
+          </motion.h2>
+          <motion.p
+            className="text-gray-600"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {t("books.description")}
+          </motion.p>
+        </motion.div>
 
-        {/* Loading */}
+        {/* Loading Skeleton */}
         {loading && (
-          <div className="flex justify-center items-center py-16">
-            <p className="text-gray-500">Loading books...</p>
+          <div className="flex gap-6 overflow-hidden">
+            {[...Array(5)].map((_, index) => (
+              <div key={index} className="flex-shrink-0 w-64 overflow-hidden rounded-2xl shadow-md bg-white animate-pulse">
+                <div className="w-full aspect-[2.8/4] bg-gray-200" />
+                <div className="p-4 space-y-2">
+                  <div className="h-4 bg-gray-200 rounded w-3/4" />
+                  <div className="h-3 bg-gray-200 rounded w-1/2" />
+                  <div className="h-3 bg-gray-200 rounded w-2/3" />
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
@@ -52,60 +96,47 @@ const BookSection = () => {
           </div>
         )}
 
-        {/* Books */}
+        {/* Books Carousel */}
         {!loading && !error && (
           <>
             {books.length > 0 ? (
               <>
-                {/* GRID for larger screens */}
-                <div className="hidden sm:grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
-                  {displayedBooks.map((book, index) => (
-                    <motion.div
-                      key={book._id}
-                      variants={fadeUp}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: false, amount: 0.3 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <BookCard book={book} />
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* CAROUSEL for mobile */}
-                <div className="block sm:hidden">
-                  <Swiper
-                    modules={[Pagination, Autoplay]}
-                    spaceBetween={16}
-                    slidesPerView={1.1}
-                    centeredSlides={true}
-                    pagination={{ clickable: true }}
-                    autoplay={{ delay: 2500, disableOnInteraction: false }}
-                    loop={true}
-                  >
-                    {displayedBooks.map((book, index) => (
-                      <SwiperSlide key={book._id}>
-                        <motion.div
-                          variants={fadeUp}
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: false, amount: 0.3 }}
-                          transition={{ duration: 0.5, delay: index * 0.1 }}
-                          className="px-4 p-1"
-                        >
-                          <BookCard book={book} />
-                        </motion.div>
-                      </SwiperSlide>
+                <div className="relative overflow-hidden py-4">
+                  <div className="flex gap-6 animate-scroll">
+                    {/* First set of books */}
+                    {displayedBooks.slice(0, 10).map((book, index) => (
+                      <div
+                        key={`${book._id}-${index}`}
+                        className="flex-shrink-0 w-64 sm:w-72 md:w-80"
+                      >
+                        <BookCard book={book} onClick={(book) => navigate(`/books/${book._id}`)} />
+                      </div>
                     ))}
-                  </Swiper>
+                    {/* Duplicate set for seamless loop */}
+                    {displayedBooks.slice(0, 10).map((book, index) => (
+                      <div
+                        key={`${book._id}-duplicate-${index}`}
+                        className="flex-shrink-0 w-64 sm:w-72 md:w-80"
+                      >
+                        <BookCard book={book} onClick={(book) => navigate(`/books/${book._id}`)} />
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Show More Button */}
                 {books.length > 8 && (
-                  <div className="flex justify-center mt-8">
-                    <Button onClick={handleShowMore}>Show More</Button>
-                  </div>
+                  <motion.div
+                    className="flex justify-center mt-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
+                  >
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button onClick={handleShowMore}>Show More</Button>
+                    </motion.div>
+                  </motion.div>
                 )}
               </>
             ) : (
